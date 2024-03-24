@@ -1,4 +1,5 @@
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-master
@@ -19,11 +20,11 @@ spec:
         tier: backend
     spec:
       containers:
-      - name: master
-        image: k8s.gcr.io/redis:e2e  # or just image: redis
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
-        ports:
-        - containerPort: 6379
+        - name: master
+          image: k8s.gcr.io/redis:e2e
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 6379
